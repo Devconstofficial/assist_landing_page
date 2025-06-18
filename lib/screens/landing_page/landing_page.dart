@@ -31,92 +31,70 @@ class LandingPage extends GetView<LandingController> {
         appBar: AppBar(
           backgroundColor: kWhiteColor,
           surfaceTintColor: kWhiteColor,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Image.asset(
-                kLogo,
-                height: 180.h,
-                width: 180.w,
-              ),
-              Obx(() {
-                List<String> titles = ['Home', 'How It Works', 'Impact', 'FAQs', 'Contact',];
+          title: Padding(
+            padding: EdgeInsets.only(left: 50.w),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image.asset(
+                  kLogo,
+                  height: 70,
+                  width: 76,
+                  color: kBlackColor,
+                ),
+                Obx(() {
+                  List<String> titles = ['Home', 'How It Works', 'Impact', 'FAQs', 'Contact',];
 
-                return Row(
-                  children: List.generate(titles.length, (index) {
-                    final isSelected = controller.selectedIndex.value == index;
+                  return Row(
+                    children: List.generate(titles.length, (index) {
+                      final isSelected = controller.selectedIndex.value == index;
 
-                    return Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 24.w),
-                      child: MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        child: GestureDetector(
-                          onTap: () => controller.changeIndex(index),
-                          child: Column(
-                            children: [
-                              Text(
-                                titles[index],
-                                style: AppStyles.blackTextStyle().copyWith(
-                                  fontWeight: (isSelected)
-                                      ? FontWeight.w700
-                                      : FontWeight.w500,
-                                  fontSize: 34.sp,
-                                  color: isSelected ? kPrimaryColor : kBlackColor,
+                      return Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 24.w),
+                        child: MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: GestureDetector(
+                            onTap: () => controller.changeIndex(index),
+                            child: Column(
+                              children: [
+                                Text(
+                                  titles[index],
+                                  style: AppStyles.blackTextStyle().copyWith(
+                                    fontWeight: (isSelected)
+                                        ? FontWeight.w700
+                                        : FontWeight.w500,
+                                    fontSize: 16.sp,
+                                    color: isSelected ? kPrimaryColor : kBlackColor,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: 4.h),
-                              if (isSelected)
-                                Builder(
-                                  builder: (context) {
-                                    final text = titles[index];
-                                    final textPainter = TextPainter(
-                                      text: TextSpan(
-                                        text: text,
-                                        style: AppStyles.blackTextStyle().copyWith(
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: 34.sp,
-                                        ),
-                                      ),
-                                      maxLines: 1,
-                                      textDirection: TextDirection.ltr,
-                                    )..layout();
-
-                                    return Image.asset(
-                                      kUnderlineIcon,
-                                      height: 12,
-                                      width: textPainter.width,
-                                      fit: BoxFit.fill,
-                                    );
-                                  },
-                                )
-                              else
-                                SizedBox(height: 12),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  }),
-                );
-              }),
-              Padding(
-                padding: EdgeInsets.only(right: 60.0.w),
-                child: MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: CustomButton(
-                    textSize: 28.sp,
-                    fontWeight: FontWeight.w600,
-                    title: "Donate Now",
-                    width: 251.w,
-                    height: 72.h,
-                    onTap: () {
-                      controller.selectedIndex.value = -1;
-                      controller.isDonateSelected.value = true;
-                    },
+                      );
+                    }),
+                  );
+                }),
+                Padding(
+                  padding: EdgeInsets.only(right: 88.0.w),
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: CustomButton(
+                      textSize: 16,
+                      fontWeight: FontWeight.w500,
+                      title: "Donate Now",
+                      width: 121,
+                      height: 42.h,
+                      onTap: () {
+                        controller.selectedIndex.value = -1;
+                        controller.isDonateSelected.value = true;
+                      },
+
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           centerTitle: false,
           toolbarHeight: 120,
@@ -128,7 +106,6 @@ class LandingPage extends GetView<LandingController> {
                 children: [
                   PricingPage(),
                   FooterSection()
-
                 ],
               );
             }
@@ -139,6 +116,7 @@ class LandingPage extends GetView<LandingController> {
                   SizedBox(height: 70.h,),
                 if(controller.selectedIndex.value == 0) ...[
                   HomeSection(),
+                  SizedBox(height: 142.h,),
                 ],
                 if(controller.selectedIndex.value == 1)
                   HowWorkSection(),

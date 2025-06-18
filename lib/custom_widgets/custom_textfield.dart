@@ -49,7 +49,7 @@ class CustomTextField extends StatelessWidget {
     this.onTap,
     this.maxLines = 1,
     this.inputFormatters,
-    this.borderRadius = 18,
+    this.borderRadius = 12,
   });
 
   @override
@@ -82,7 +82,7 @@ class CustomTextField extends StatelessWidget {
           contentPadding: EdgeInsets.symmetric(vertical: 27.h),
           hintText: hintText,
           hintStyle: AppStyles.greyTextStyle().copyWith(
-            fontSize: 24.sp,
+            fontSize: 20.sp,
             fontWeight: FontWeight.w400,
             color: hintColor,
           ),

@@ -12,6 +12,7 @@ String kFacebookIcon = "$basePathIcons/facebook.svg";
 String kLocationIcon = "$basePathIcons/location.svg";
 String kMessageImage = "$basePathIcons/message.svg";
 String kXImage = "$basePathIcons/x.png";
+String kDots1Image = "$basePathIcons/dots_image.svg";
 
 /// IMAGES
 String kLogo = "$basePath/logo.png";

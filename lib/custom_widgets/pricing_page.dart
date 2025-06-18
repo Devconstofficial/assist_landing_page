@@ -31,7 +31,7 @@ class _PricingPageState extends State<PricingPage> {
     );
   }
 
-  Widget priceCard(String title, String price, int index) {
+  Widget priceCard(String title, String price, int index,detail) {
     bool isHovered = controller.hoveredIndex.value == index;
 
     return MouseRegion(
@@ -42,40 +42,54 @@ class _PricingPageState extends State<PricingPage> {
         transform: isHovered ? Matrix4.translationValues(0, -50, 0) : Matrix4.identity(),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(34),
-          color: isHovered ? kBlackColor : kWhiteColor,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 20,
-              offset: Offset(0, 8),
-            ),
-          ],
+          color: kGreyShade9Color,
+          border: isHovered ? Border.all(
+            color: isHovered ? kBlackColor :  kGreyShade9Color,
+            width: 2
+          ) : null
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 57.h),
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 33.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                title,
-                style: AppStyles.blackTextStyle().copyWith(
-                  fontSize: 40.sp,
-                  color: isHovered ? kWhiteColor : kBlackColor,
-                ),
+              SizedBox(height: 15.h,),
+              Row(
+                children: [
+                  SvgPicture.asset(kDots1Image,height: 53,),
+                  SizedBox(width: 9.2,),
+                  Flexible(
+                    child: Text(
+                      "$title Support",
+                      style: AppStyles.blackTextStyle().copyWith(
+                        fontSize: 20.sp,
+                        color: kBlackColor,
+                      ),
+                    ),
+                  ),
+                ],
               ),
               SizedBox(height: 14.h),
-              customRow("Help cover a small utility bill", isHovered ? kWhiteColor : kBlackColor, isHovered ? kWhiteColor : kBlackColor),
-              customRow("Monthly impact report via email", isHovered ? kWhiteColor : kBlackColor, isHovered ? kWhiteColor : kBlackColor),
-              customRow("Early access to blog updates", kGreyShade4Color, kGreyShade4Color),
-              customRow("Community newsletter subscription", kGreyShade4Color, kGreyShade4Color),
-              customRow("Donor badge on your profile", kGreyShade4Color, kGreyShade4Color),
+              Text(
+                detail,
+                style: AppStyles.blackTextStyle().copyWith(
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w400,
+                  color: kBlackColor,
+                ),
+              ),
               SizedBox(height: 24.h),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("\$", style: GoogleFonts.inter(fontSize: 20.sp, fontWeight: FontWeight.w400, color: isHovered ? kWhiteColor : kBlackColor)),
-                  Text(price, style: GoogleFonts.inter(fontSize: 25.sp, fontWeight: FontWeight.w700, color: isHovered ? kWhiteColor : kBlackColor)),
-                  Text("/month", style: GoogleFonts.inter(fontSize: 20.sp, fontWeight: FontWeight.w400, color: isHovered ? kWhiteColor : kBlackColor)),
+                  Row(
+                    children: [
+                      Text("\$", style: GoogleFonts.inter(fontSize: 18.sp, fontWeight: FontWeight.w600, color: kBlackColor)),
+                      Text(price, style: GoogleFonts.inter(fontSize: 34.sp, fontWeight: FontWeight.w600, color: kBlackColor)),
+                      Text("/", style: GoogleFonts.inter(fontSize: 18.sp, fontWeight: FontWeight.w600, color: kBlackColor)),
+                    ],
+                  ),
+                  Text("month", style: GoogleFonts.inter(fontSize: 18.sp, fontWeight: FontWeight.w600, color: kBlackColor)),
                 ],
               ),
               SizedBox(height: 32.h),
@@ -136,7 +150,7 @@ class _PricingPageState extends State<PricingPage> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(height: 48.h),
+                                  SizedBox(height: 58.h),
                                   CustomTextField(hintText: "Card Holder name",isFilled: true,fillColor: kGreyShade5Color.withOpacity(0.22),),
                                   SizedBox(height: 32.h),
                                   CustomTextField(hintText: "Card number",isFilled: true,fillColor: kGreyShade5Color.withOpacity(0.22),),
@@ -172,15 +186,15 @@ class _PricingPageState extends State<PricingPage> {
                                       Text("Save card",style: AppStyles.blackTextStyle().copyWith(fontSize: 34.sp,fontWeight: FontWeight.w500),),
                                     ],
                                   ),
-                                  SizedBox(height: 32.h),
+                                  SizedBox(height: 96.h),
                                   CustomButton(
                                     title: "Continue",
                                     onTap: () {
                                       Get.back();
                                     },
                                     height: 90.h,
-                                    textSize: 28.sp,
-                                    fontWeight: FontWeight.w700,
+                                    textSize: 20.sp,
+                                    fontWeight: FontWeight.w500,
                                   )
                                 ],
                               ),
@@ -193,9 +207,9 @@ class _PricingPageState extends State<PricingPage> {
                 },
                 height: 52.h,
                 textSize: 20.sp,
-                color: isHovered ? kWhiteColor : kBlackColor,
-                textColor: isHovered ? kBlackColor : kWhiteColor,
-                fontWeight: FontWeight.w700,
+                color:kBlackColor,
+                textColor: kWhiteColor,
+                fontWeight: FontWeight.w500,
               ),
               SizedBox(height: 20.h),
             ],
@@ -207,34 +221,77 @@ class _PricingPageState extends State<PricingPage> {
   
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: kGreyShade7Color,
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 94.h,horizontal: 70.w),
-        child: Column(
-          children: [
-            SvgPicture.asset(kDotsImage,height: 21,width: 155.w,),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                UnderlinedText(text: "Support"),
-                Text(" a Life Today",style: AppStyles.blackTextStyle().copyWith(fontSize: 66.sp,),),
-              ],
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 94.h,horizontal: 140.w),
+      child: Column(
+        children: [
+          SvgPicture.asset(kDotsImage,height: 21,width: 155.w,),
+          Text("Choose your Monthly Support",style: AppStyles.blackTextStyle().copyWith(fontSize: 55.sp,),),
+          SizedBox(height: 27.h,),
+          Obx(() => Container(
+            width: 257,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(100),
+              border: Border.all(
+                  color: kBlackColor
+              ),
             ),
-            Text("Choose a tier, subscribe, and see how your help brings real change.",style: AppStyles.blackTextStyle().copyWith(fontSize: 34.sp,color: kGreyShade6Color),),
-            SizedBox(height: 98.h,),
-            Row(
-              spacing: 25.w,
-              children: [
-                Expanded(child: priceCard("Basic", "1",0)),
-                Expanded(child: priceCard("Standard", "5",1)),
-                Expanded(child: priceCard("Premium", "10",2)),
-                Expanded(child: priceCard("Champion", "20",3)),
-              ],
-            )
-          ],
-        ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 11,vertical: 10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: GestureDetector(
+                      onTap: (){
+                        controller.setSelectedMonth(0);
+                      },
+                      child: Container(
+                        height: 40,
+                        width: 108,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            color: controller.selectedMonth.value == 0 ? kBlackColor : kWhiteColor
+                        ),
+                        child: Center(child: Text("One time",style: AppStyles.blackTextStyle().copyWith(fontSize: 18,fontWeight: FontWeight.w500,color: controller.selectedMonth.value == 0 ? kWhiteColor : kBlackColor),)),
+                      ),
+                    ),
+                  ),
+                  MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: GestureDetector(
+                      onTap: (){
+                        controller.setSelectedMonth(1);
+                      },
+                      child: Container(
+                        height: 40,
+                        width: 108,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            color: controller.selectedMonth.value == 1 ? kBlackColor : kWhiteColor
+                        ),
+                        child: Center(child: Text("Monthly",style: AppStyles.blackTextStyle().copyWith(fontSize: 18,fontWeight: FontWeight.w500,color: controller.selectedMonth.value == 1 ? kWhiteColor : kBlackColor),)),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),),
+          SizedBox(height: 134.h,),
+          Row(
+            spacing: 25.w,
+            children: [
+              Expanded(child: priceCard("Basic", "1",0,"Start making a difference with just \$1/month.")),
+              Expanded(child: priceCard("Standard", "5",1, "Help more people with a little extra support.")),
+              Expanded(child: priceCard("Premium", "10",2,"Your generosity creates meaningful impact.")),
+              Expanded(child: priceCard("Champion", "20",3,"Lead the change with our Highest level of support.")),
+            ],
+          ),
+          SizedBox(height: 19.h,),
+
+        ],
       ),
     );
   }

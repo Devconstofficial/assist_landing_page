@@ -4,17 +4,23 @@ import 'package:google_fonts/google_fonts.dart';
 import 'app_colors.dart';
 
 class AppStyles {
-  static TextStyle blackTextStyle() => GoogleFonts.alegreyaSans(
+  static TextStyle blackTextStyle() => GoogleFonts.lato(
     fontSize: 14.sp,
     fontWeight: FontWeight.w500,
     color: kBlackTextColor,
   );
-  static TextStyle whiteTextStyle() => GoogleFonts.alegreyaSans(
+  static TextStyle whiteTextStyle() => GoogleFonts.lato(
     fontSize: 14.sp,
     fontWeight: FontWeight.w500,
     color: kWhiteColor,
   );
-  static TextStyle greyTextStyle() => GoogleFonts.alegreyaSans(
+
+  static TextStyle promptTextStyle() => GoogleFonts.prompt(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: kWhiteColor,
+  );
+  static TextStyle greyTextStyle() => GoogleFonts.lato(
     fontSize: 14.sp,
     fontWeight: FontWeight.w500,
     color: kGreyShade1Color,

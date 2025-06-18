@@ -27,7 +27,10 @@ class _ImpactSectionState extends State<ImpactSection> {
       child: Column(
         children: [
           SvgPicture.asset(kDotsImage,height: 21,width: 155.w,),
-          UnderlinedText(text: "Impact"),
+          Text(
+            "Impact",
+            style: AppStyles.blackTextStyle().copyWith(fontWeight: FontWeight.w500,fontSize: 55.sp),
+          ),
           SizedBox(height: 59.h,),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -36,69 +39,28 @@ class _ImpactSectionState extends State<ImpactSection> {
                 width: 538.w,
                 decoration: BoxDecoration(
                   color: kGreyShade3Color,
-                  borderRadius: BorderRadius.circular(24),
-                  boxShadow: [
-                    BoxShadow(
-                      color: kGreyShade5Color.withOpacity(0.43),
-                      offset: Offset(0, 4),
-                      blurRadius: 22,
-                      spreadRadius: 0
-                    )
-                  ]
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.only(top: 20.h,left: 31.w,right: 22.w,bottom: 54.h),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  padding: EdgeInsets.only(top: 50.h,left: 31.w,right: 30.w,bottom: 54.h),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Container(
-                            height: 47.h,
-                            decoration: BoxDecoration(
-                              color: kWhiteColor,
-                              borderRadius: BorderRadius.circular(100),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: kGreyShade5Color,
-                                  offset: Offset(0, 4),
-                                  blurRadius: 22,
-                                  spreadRadius: 0
-                                )
-                              ]
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 12,horizontal: 18),
-                              child: Row(
-                                children: [
-                                  Text("Last month",style: AppStyles.blackTextStyle().copyWith(fontSize: 16.sp,),),
-                                  SizedBox(width: 4.w,),
-                                  Icon(Icons.keyboard_arrow_down,size: 24,)
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 7,),
-                      Row(
-                        children: [
-                          SvgPicture.asset(kHomeImage,height: 105,),
+                          SvgPicture.asset(kMarketImage,height: 70,),
                           SizedBox(width: 16.w,),
-                          Text("\$2,4000",style: AppStyles.blackTextStyle().copyWith(fontSize: 54.sp,),),
+                          Text("\$2,4000",style: AppStyles.blackTextStyle().copyWith(fontSize: 24.sp,),),
                         ],
                       ),
-                      SizedBox(height: 24,),
-                      Text("24 subscribers",style: AppStyles.blackTextStyle().copyWith(fontSize: 34.sp,),),
-
+                      Text("24 subscribers",style: AppStyles.blackTextStyle().copyWith(fontSize: 18.sp,),),
                     ],
                   ),
                 ),
               ),
             ],
           ),
-          SizedBox(height: 75.w,),
+          SizedBox(height: 59.h,),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
@@ -111,7 +73,9 @@ class _ImpactSectionState extends State<ImpactSection> {
                 reviewContainer(),
               ],
             ),
-          )
+          ),
+          SizedBox(height: 150.h,),
+
         ],
       ),
     );
@@ -124,7 +88,7 @@ class _ImpactSectionState extends State<ImpactSection> {
         borderRadius: BorderRadius.circular(24),
       ),
       child: Padding(
-        padding: EdgeInsets.only(top: 33.h,left: 44.w,bottom: 33.h,right: 18.w),
+        padding: EdgeInsets.only(top: 44.h,left: 33.w,bottom: 44.h,right: 18.w),
         child: Row(
           children: [
             SvgPicture.asset(kUserImage,height: 105,),
@@ -133,8 +97,8 @@ class _ImpactSectionState extends State<ImpactSection> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Thank you so much for your help!",style: AppStyles.blackTextStyle().copyWith(fontSize: 32.sp,),),
-                  Text("You made a difficult time a little easier for me and my family.",style: AppStyles.blackTextStyle().copyWith(fontSize: 24.sp,fontWeight: FontWeight.w400),),
+                  Text("Thank you so much for your help!",style: AppStyles.blackTextStyle().copyWith(fontSize: 24.sp,),),
+                  Text("You made a difficult time a little easier for me and my family.",style: AppStyles.blackTextStyle().copyWith(fontSize: 18.sp,fontWeight: FontWeight.w400),),
                 ],
               ),
             ),

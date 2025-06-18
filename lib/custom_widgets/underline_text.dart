@@ -29,11 +29,6 @@ class UnderlinedText extends StatelessWidget {
           style: style,
         ),
         SizedBox(height: 4.h),
-        SvgPicture.asset(
-          kUnderline1Icon,
-          height: 14.h,
-          width: textPainter.width,
-        ),
       ],
     );
   }

@@ -22,73 +22,39 @@ class _ContactUsSectionState extends State<ContactUsSection> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: kBlackTextColor1.withOpacity(0.09),
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 44.h,horizontal: 155.w),
-        child: Column(
-          children: [
-            SvgPicture.asset(kDotsImage,height: 21,width: 155.w,),
-            Text("Contact us",style: AppStyles.blackTextStyle().copyWith(fontSize: 66.sp,fontWeight: FontWeight.w500),),
-            SvgPicture.asset(
-              kUnderline1Icon,
-              height: 14,
-              width: 172.w,
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 44.h,horizontal: 155.w),
+      child: Column(
+        children: [
+          SvgPicture.asset(kDotsImage,height: 21,width: 155.w,),
+          Text("Contact us",style: AppStyles.blackTextStyle().copyWith(fontSize: 55.sp,fontWeight: FontWeight.w500),),
+
+          SizedBox(height: 48.h,),
+          Container(
+            decoration: BoxDecoration(
+              color: kGreyShade8Color,
+              borderRadius: BorderRadius.circular(45),
             ),
-            SizedBox(height: 48.h,),
-            Container(
-              decoration: BoxDecoration(
-                color: kWhiteColor,
-                borderRadius: BorderRadius.circular(45),
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 66.h,horizontal: 62.w),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(child: CustomTextField(hintText: "Name",isFilled: true,fillColor: kWhiteColor,)),
+                      SizedBox(width: 23.w,),
+                      Expanded(child: CustomTextField(hintText: "Email",isFilled: true,fillColor: kWhiteColor,)),
+                    ],
+                  ),
+                  SizedBox(height: 23.h,),
+                  CustomTextField(hintText: "Type message here...",isFilled: true,fillColor: kWhiteColor,maxLines: 6,),
+                  SizedBox(height: 68.h,),
+                  CustomButton(title: "Submit", onTap: (){},height: 72.h,width: 535.w,textSize: 24.sp,fontWeight: FontWeight.w700,)
+                ],
               ),
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 56.h,horizontal: 37.w),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(child: CustomTextField(hintText: "Name",isFilled: true,fillColor: kGreyShade5Color.withOpacity(0.22),)),
-                        SizedBox(width: 30.w,),
-                        Expanded(child: CustomTextField(hintText: "Email",isFilled: true,fillColor: kGreyShade5Color.withOpacity(0.22),)),
-                      ],
-                    ),
-                    SizedBox(height: 18.h,),
-                    CustomTextField(hintText: "Type message here...",isFilled: true,fillColor: kGreyShade5Color.withOpacity(0.22),maxLines: 6,),
-                    SizedBox(height: 18.h,),
-                    Row(
-                      children: [
-                        Obx(() => MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: GestureDetector(
-                            onTap: (){
-                              controller.isChecked.value = !controller.isChecked.value;
-                            },
-                            child: Container(
-                              height: 34,
-                              width: 34,
-                              decoration: BoxDecoration(
-                                  color: kWhiteColor,
-                                  borderRadius: BorderRadius.circular(6),
-                                  border: Border.all(
-                                      color: kBlackColor
-                                  )
-                              ),
-                              child: controller.isChecked.value ? Center(child: Icon(Icons.check,color: kBlueColor,size: 24,)) : SizedBox.shrink(),
-                            ),
-                          ),
-                        ),),
-                        SizedBox(width: 5.w,),
-                        Text("Be the first to hear when we open more spots.",style: AppStyles.blackTextStyle().copyWith(fontSize: 20.sp,fontWeight: FontWeight.w400),),
-                      ],
-                    ),
-                    SizedBox(height: 30.h,),
-                    CustomButton(title: "Submit", onTap: (){},height: 90.h,width: 535.w,textSize: 24,fontWeight: FontWeight.w700,)
-                  ],
-                ),
-              ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }

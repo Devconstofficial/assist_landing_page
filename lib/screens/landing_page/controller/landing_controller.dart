@@ -5,6 +5,7 @@ class LandingController extends GetxController {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   RxInt selectedIndex = 0.obs;
   var selectedType = 0.obs;
+  var selectedMonth = 0.obs;
   var hoveredIndex = (-1).obs;
   var isChecked = false.obs;
   var isChecked1 = false.obs;
@@ -23,5 +24,8 @@ class LandingController extends GetxController {
 
   void setSelected(int index) {
     selectedType.value = index;
+  }
+  void setSelectedMonth(int index) {
+    selectedMonth.value = index;
   }
 }

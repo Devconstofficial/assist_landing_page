@@ -20,44 +20,44 @@ class HowWorkSection extends StatefulWidget {
 class _HowWorkSectionState extends State<HowWorkSection> {
   LandingController controller = Get.put(LandingController());
 
-  Widget subscriberTab(){
+  Widget subscriberTab(title1, detail1, title2, detail2, title3, detail3, title4, detail4){
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 70.w),
+      padding: EdgeInsets.symmetric(horizontal: 88.w),
       child: SizedBox(
-        height: 610.h,
+        height: 480.h,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-                flex: 2,
+              flex: 2,
                 child: SizedBox(
-                    height: 610,
+                    height: 480.h,
                     child: ClipRRect(
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(45),
                             topRight: Radius.circular(45)
                         ),
-                        child: Image.asset(kMobileImage2,fit: BoxFit.cover,)))),
+                        child: Image.asset(kMobileImage2,fit: BoxFit.contain,)))),
             SizedBox(width: 16.w,),
             Expanded(
               flex: 3,
               child: Padding(
-                padding: EdgeInsets.only(top: 49.h),
+                padding: EdgeInsets.only(top: 69.h),
                 child: Column(
                   children: [
                     Row(
                       children: [
-                        Expanded(child: reviewContainer("Select Bill Category", "Choose the type of bill you want to submit")),
-                        SizedBox(width: 20.w,),
-                        Expanded(child: reviewContainer("Upload Your Bill", "Submit a clear photo or PDF of your recent bill for verification.")),
+                        Expanded(child: reviewContainer(title1, detail1)),
+                        SizedBox(width: 26.w,),
+                        Expanded(child: reviewContainer(title2, detail2)),
                       ],
                     ),
-                    SizedBox(height: 37.h,),
+                    SizedBox(height: 32.h,),
                     Row(
                       children: [
-                        Expanded(child: reviewContainer("Share Your Reason", "Tell us why you are applying")),
-                        SizedBox(width: 20.w,),
-                        Expanded(child: reviewContainer("Submit Your Application", "Review your details and submit your application for consideration.")),
+                        Expanded(child: reviewContainer(title3, detail3)),
+                        SizedBox(width: 26.w,),
+                        Expanded(child: reviewContainer(title4, detail4)),
                       ],
                     ),
                   ],
@@ -70,185 +70,6 @@ class _HowWorkSectionState extends State<HowWorkSection> {
     );
   }
 
-  Widget applicantTab(){
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 66.w),
-      child: SizedBox(
-        height: 830.h,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-                height: 830.h,
-                width: 560.w,
-                child: ClipRRect(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(45),
-                        topRight: Radius.circular(45)
-                    ),
-                    child: Image.asset(kMobileImage2,fit: BoxFit.fill,))),
-            SizedBox(width: 35.w,),
-            Expanded(
-                flex: 3,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      height: 396.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(24),
-                        border: Border.all(
-                          color: kBlackColor.withOpacity(0.12),
-                        ),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 43.h,horizontal: 50.w),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Choose a Monthly Amount",
-                                  style: AppStyles.blackTextStyle().copyWith(
-                                    fontSize: 34.sp,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                SizedBox(height: 4,),
-                                Text(
-                                  "Select a donation amount that fits your budget",
-                                  style: AppStyles.blackTextStyle().copyWith(
-                                    fontSize: 24.sp,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                Obx(() => SliderTheme(
-                                  data: SliderTheme.of(context).copyWith(
-                                    trackHeight: 25,
-                                    thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 12),
-                                    overlayShape: const RoundSliderOverlayShape(overlayRadius: 22),
-                                    activeTrackColor: kBlackColor,
-                                    inactiveTrackColor: Colors.grey[300],
-                                    thumbColor: kWhiteColor,
-                                    padding: EdgeInsets.all(0),
-                                    overlayColor: kBlackColor.withOpacity(0.2),
-                                  ),
-                                  child: Slider(
-                                    value: controller.selectedAmount.value,
-                                    min: 0,
-                                    max: 100,
-                                    // divisions: 10,
-                                    label: '\$${controller.selectedAmount.value.toInt()}',
-                                    onChanged: (value) {
-                                      controller.selectedAmount.value = value;
-                                    },
-                                  ),
-                                )),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "\$10",
-                                      style: AppStyles.blackTextStyle().copyWith(
-                                        fontSize: 24.sp,
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                    Text(
-                                      "\$${controller.selectedAmount.value.toInt()}",
-                                      style: AppStyles.blackTextStyle().copyWith(
-                                        fontSize: 24.sp,
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                    Text(
-                                      "\$1500",
-                                      style: AppStyles.blackTextStyle().copyWith(
-                                        fontSize: 24.sp,
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            CustomButton(title: "Confirm Amount", onTap: (){},height: 77.h,textSize: 24.sp,fontWeight: FontWeight.w700,)
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 396.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(24),
-                        border: Border.all(
-                          color: kBlackColor.withOpacity(0.12),
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(24),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Track Your Impact",
-                                  style: GoogleFonts.lato(
-                                    fontSize: 30.sp,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                Obx((){
-                                  bool monthly = controller.isMonthly.value;
-                                  return Container(
-                                    height: 45.h,
-                                    width: 186,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(100),
-                                        color: kWhiteColor,
-                                        border: Border.all(
-                                            width: 0.5,
-                                            color: kGreyShade2Color
-                                        )
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        Expanded(child: CustomButton(title: "Monthly", onTap: (){
-                                          controller.selectMonthly();
-                                        },height: 45,textSize: 12,color: monthly ? kPrimaryColor : kWhiteColor,borderColor: monthly ? kPrimaryColor : kWhiteColor,textColor: monthly ? kWhiteColor : kPrimaryColor,)),
-                                        Expanded(child: CustomButton(title: "Yearly", onTap: (){
-                                          controller.selectYearly();
-                                        },height: 45,textSize: 12,color: monthly ? kWhiteColor : kPrimaryColor,borderColor: monthly ? kWhiteColor : kPrimaryColor,textColor: monthly ? kPrimaryColor : kWhiteColor,)),
-                                      ],
-                                    ),
-                                  );
-                                })
-                              ],
-                            ),
-                            SizedBox(height: 21.h,),
-                            Obx(() => SubscriptionGraph(
-                              isMonthly: controller.isMonthly.value,
-                            )),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ))
-          ],
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -257,12 +78,12 @@ class _HowWorkSectionState extends State<HowWorkSection> {
       child: Column(
         children: [
           SvgPicture.asset(kDotsImage,height: 21,width: 155.w,),
-          Text("How It’s Work",style: AppStyles.blackTextStyle().copyWith(fontSize: 66.sp,),),
-          Text("Select your role to see how the process works.",style: AppStyles.blackTextStyle().copyWith(fontSize: 34.sp,color: kGreyShade6Color),),
+          Text("How It’s Work",style: AppStyles.blackTextStyle().copyWith(fontSize: 55.sp,),),
+          Text("Select your role to see how the process works.",style: AppStyles.blackTextStyle().copyWith(fontSize: 24.sp,color: kGreyShade6Color),),
           SizedBox(height: 11.h,),
           Container(
-            width: 461.w,
-            height: 72.h,
+            width: 320,
+            height: 62,
             decoration: BoxDecoration(
               color: kWhiteColor,
               borderRadius: BorderRadius.circular(100),
@@ -294,7 +115,8 @@ class _HowWorkSectionState extends State<HowWorkSection> {
           SizedBox(height: 90.h,),
           Obx(
                 () {
-              return controller.selectedType.value == 0 ? subscriberTab() : applicantTab();
+              return controller.selectedType.value == 0 ? subscriberTab("Subscription Plan", "Choose a subscription plan that suits you.", "Impact Feed", "Can post on impact feed.", "Contribution Stats", "Can view the overall donation impact.", "Contact The Admin", "Can contact the admin for assistance.") :
+              subscriberTab("Select Bill Category", "Choose the type of bill you want to submit.", "Upload Bill", "Submit clear photo PDF of your Recent Bill For verification.", "Share Your Reason", "Tell us why you are applying.", "Submit Application", "Review your details submit your application  for consideration.");
           },)
         ],
       ),
@@ -304,26 +126,26 @@ class _HowWorkSectionState extends State<HowWorkSection> {
 
  Widget reviewContainer(title,detail){
   return Container(
-    height: 179.h,
+    height: 131.h,
     decoration: BoxDecoration(
-      color: kGreyShade3Color,
-      borderRadius: BorderRadius.circular(24),
+      color: kGreyShade5Color.withOpacity(0.22),
+      borderRadius: BorderRadius.circular(20),
     ),
     child: Padding(
-      padding: EdgeInsets.only(left: 44.w,right: 18.w),
+      padding: EdgeInsets.symmetric(horizontal: 33.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SvgPicture.asset(kCheckImage,height: 64,),
-          SizedBox(width: 9.w,),
+          SvgPicture.asset(kCheckImage,height: 45,),
+          SizedBox(width: 6.w,),
           Flexible(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(title,style: AppStyles.blackTextStyle().copyWith(fontSize: 24.sp,),),
-                Text(detail,style: AppStyles.blackTextStyle().copyWith(fontSize: 18.sp,fontWeight: FontWeight.w400),),
+                Text(title,style: AppStyles.blackTextStyle().copyWith(fontSize: 20.sp,),),
+                Text(detail,style: AppStyles.blackTextStyle().copyWith(fontSize: 14.sp,fontWeight: FontWeight.w400),),
               ],
             ),
           ),
@@ -359,31 +181,31 @@ class _HowWorkSectionState extends State<HowWorkSection> {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 52.h,
-        width: 209.w,
+        height: 40,
+        width: 146,
         decoration: BoxDecoration(
           color: bgColor,
           borderRadius: BorderRadius.circular(100),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 9),
+        padding: const EdgeInsets.symmetric(horizontal: 7),
         child: Row(
           mainAxisAlignment: isLeft ? MainAxisAlignment.start : MainAxisAlignment.end,
           children: isLeft
               ? [
-            CircleAvatar(radius: 15, backgroundColor: kWhiteColor),
-            SizedBox(width: 22.w),
+            CircleAvatar(radius: 10, backgroundColor: kWhiteColor),
+            SizedBox(width: 12),
             Text(
               title,
-              style: AppStyles.blackTextStyle().copyWith(color: textColor, fontSize: 24.sp),
+              style: AppStyles.blackTextStyle().copyWith(color: textColor, fontSize: 18),
             ),
           ]
               : [
             Text(
               title,
-              style: AppStyles.blackTextStyle().copyWith(color: textColor, fontSize: 24.sp),
+              style: AppStyles.blackTextStyle().copyWith(color: textColor, fontSize: 18),
             ),
-            SizedBox(width: 22.w),
-            CircleAvatar(radius: 15, backgroundColor: kWhiteColor),
+            SizedBox(width: 12),
+            CircleAvatar(radius: 10, backgroundColor: kWhiteColor),
           ],
         ),
       ),
