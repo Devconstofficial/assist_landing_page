@@ -38,8 +38,8 @@ class LandingPage extends GetView<LandingController> {
               children: [
                 Image.asset(
                   kLogo,
-                  height: 70,
-                  width: 76,
+                  height: 100,
+                  width: 106,
                   color: kBlackColor,
                 ),
                 Obx(() {

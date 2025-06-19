@@ -31,8 +31,8 @@ class FooterSection extends StatelessWidget {
                     spacing: 24.h,
                     children: [
                       SizedBox(
-                        height: 70,
-                          width: 75,
+                        height: 100,
+                          width: 105,
                           child: Image.asset(kLogo,fit: BoxFit.cover,color: kWhiteColor,)),
                       Text("The Assist App is a registered 501(c)(3) nonprofit. EIN: 39-2153324",style: AppStyles.promptTextStyle().copyWith(fontSize: 20.sp,fontWeight: FontWeight.w400),),
                       Column(
@@ -50,9 +50,22 @@ class FooterSection extends StatelessWidget {
                               padding: EdgeInsets.symmetric(horizontal: 21.w),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("Enter your email address",style: AppStyles.blackTextStyle().copyWith(fontSize: 15.sp),),
+                                  Expanded(
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                        focusedBorder: InputBorder.none,
+                                        enabledBorder: InputBorder.none,
+                                        disabledBorder: InputBorder.none,
+                                        hintText: "Enter your email address",
+
+                                        hintStyle: AppStyles.blackTextStyle().copyWith(fontSize: 15.sp)
+                                      ),
+                                      style: AppStyles.blackTextStyle().copyWith(fontSize: 15.sp),
+                                    ),
+                                  ),
+                                  SizedBox(width: 20,),
                                   CustomButton(title: "Subscribe", onTap: (){},width: 80.w,height: 35.h,textSize: 13.sp,fontWeight: FontWeight.w500,)
                                 ],
                               ),
