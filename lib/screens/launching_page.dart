@@ -17,7 +17,7 @@ class LaunchingPage extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(top: 30,bottom: 88,right: 88),
+          padding: EdgeInsets.only(bottom: 88,right: 88),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -32,7 +32,7 @@ class LaunchingPage extends StatelessWidget {
                       child: Image.asset(kLogo,height: 200,width: 146,),
                     )),
               ),
-              SizedBox(height: 81.h,),
+              SizedBox(height: 51,),
               Padding(
                 padding: const EdgeInsets.only(left: 88.0),
                 child: Row(
