@@ -26,7 +26,7 @@ class HomeSection extends StatelessWidget {
                 SizedBox(height: 20.h,),
                 Text("Show the need. We’ll handle the help",style: GoogleFonts.prompt(fontSize: 60.sp,fontWeight: FontWeight.w600),),
                 SizedBox(height: 20.h,),
-                Text("App helps pay essential bills using public donations",style: GoogleFonts.prompt(fontSize: 20.sp,fontWeight: FontWeight.w400),),
+                Text("Get real help with real bills - powered by public support",style: GoogleFonts.prompt(fontSize: 20.sp,fontWeight: FontWeight.w400),),
                 SizedBox(height: 42.h,),
                 Row(
                   children: [

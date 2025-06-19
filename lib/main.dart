@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
           defaultTransition: Transition.noTransition,
           debugShowCheckedModeBanner: false,
           initialBinding: ScreenBindings(),
-          initialRoute: kLandingPageRoute,
+          initialRoute: kLaunchingPageRoute,
           getPages: RouteGenerator.getPages(),
           builder: (context, child) {
             return  MediaQuery(

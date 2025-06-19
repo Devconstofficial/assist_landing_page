@@ -26,3 +26,4 @@ String kUserImage = "$basePath/user.svg";
 String kCheckImage = "$basePath/check.svg";
 String kMobileImage2 = "$basePath/mobile_image2.png";
 String kMobileImage3 = "$basePath/mobile_image3.png";
+String kLaunchImage = "$basePath/launch_image.png";

@@ -20,7 +20,7 @@ class HowWorkSection extends StatefulWidget {
 class _HowWorkSectionState extends State<HowWorkSection> {
   LandingController controller = Get.put(LandingController());
 
-  Widget subscriberTab(title1, detail1, title2, detail2, title3, detail3, title4, detail4){
+  Widget subscriberTab(title1, detail1, title2, detail2, title3, detail3, title4, detail4,{bool isSubscription = false, String? title5, String? detail5}){
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 88.w),
       child: SizedBox(
@@ -42,8 +42,9 @@ class _HowWorkSectionState extends State<HowWorkSection> {
             Expanded(
               flex: 3,
               child: Padding(
-                padding: EdgeInsets.only(top: 69.h),
+                padding: EdgeInsets.only(top: isSubscription == true ? 0 : 69.h),
                 child: Column(
+                  mainAxisAlignment: isSubscription == true ? MainAxisAlignment.spaceBetween : MainAxisAlignment.start,
                   children: [
                     Row(
                       children: [
@@ -52,12 +53,19 @@ class _HowWorkSectionState extends State<HowWorkSection> {
                         Expanded(child: reviewContainer(title2, detail2)),
                       ],
                     ),
-                    SizedBox(height: 32.h,),
+                    SizedBox(height: isSubscription == true ? 0 : 32.h,),
                     Row(
                       children: [
                         Expanded(child: reviewContainer(title3, detail3)),
                         SizedBox(width: 26.w,),
                         Expanded(child: reviewContainer(title4, detail4)),
+                      ],
+                    ),
+                    if(isSubscription == true)
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        reviewContainer(title5, detail5,width: 334.w),
                       ],
                     ),
                   ],
@@ -115,7 +123,7 @@ class _HowWorkSectionState extends State<HowWorkSection> {
           SizedBox(height: 90.h,),
           Obx(
                 () {
-              return controller.selectedType.value == 0 ? subscriberTab("Subscription Plan", "Choose a subscription plan that suits you.", "Impact Feed", "Can post on impact feed.", "Contribution Stats", "Can view the overall donation impact.", "Contact The Admin", "Can contact the admin for assistance.") :
+              return controller.selectedType.value == 0 ? subscriberTab("Subscription Plan", "Choose a subscription plan that suits you.", "Impact Feed", "Can post on impact feed.", "Contribution Stats", "Can view the overall donation impact.", "Contact The Admin", "Can contact the admin for assistance.", isSubscription: true,title5: "Pick a Random Address",detail5: "Select address to complete your submission.") :
               subscriberTab("Select Bill Category", "Choose the type of bill you want to submit.", "Upload Bill", "Submit clear photo PDF of your Recent Bill For verification.", "Share Your Reason", "Tell us why you are applying.", "Submit Application", "Review your details submit your application  for consideration.");
           },)
         ],
@@ -124,9 +132,10 @@ class _HowWorkSectionState extends State<HowWorkSection> {
   }
 }
 
- Widget reviewContainer(title,detail){
+ Widget reviewContainer(title,detail,{double? width}){
   return Container(
     height: 131.h,
+    width: width,
     decoration: BoxDecoration(
       color: kGreyShade5Color.withOpacity(0.22),
       borderRadius: BorderRadius.circular(20),
@@ -155,8 +164,6 @@ class _HowWorkSectionState extends State<HowWorkSection> {
   );
 
 }
-
-
 
 
  class SelectableToggleButton extends StatelessWidget {
