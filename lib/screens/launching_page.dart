@@ -21,16 +21,9 @@ class LaunchingPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: GestureDetector(
-                    onTap: (){
-                      Get.offAllNamed(kLandingPageRoute);
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 50.0),
-                      child: Image.asset(kLogo,height: 200,width: 146,),
-                    )),
+              Padding(
+                padding: const EdgeInsets.only(left: 50.0),
+                child: Image.asset(kLogo,height: 200,width: 146,),
               ),
               SizedBox(height: 51,),
               Padding(
@@ -45,7 +38,7 @@ class LaunchingPage extends StatelessWidget {
 
                           CustomButton(title: "501(c)(3) Nonprofit", onTap: (){},width: 170.w,height: 41.h,textColor: kBlackColor,borderColor: kGreyShade4Color,color: kWhiteColor,textSize: 14.sp,fontWeight: FontWeight.w600,),
                           SizedBox(height: 20.h,),
-                          Text("We are Lunching at 18 July 2025",style: GoogleFonts.prompt(fontSize: 60.sp,fontWeight: FontWeight.w600),),
+                          Text("We are Launching at 18 July 2025",style: GoogleFonts.prompt(fontSize: 60.sp,fontWeight: FontWeight.w600),),
                         ],
                       ),
                     ),
