@@ -38,7 +38,7 @@ class LaunchingPage extends StatelessWidget {
 
                           CustomButton(title: "501(c)(3) Nonprofit", onTap: (){},width: 170.w,height: 41.h,textColor: kBlackColor,borderColor: kGreyShade4Color,color: kWhiteColor,textSize: 14.sp,fontWeight: FontWeight.w600,),
                           SizedBox(height: 20.h,),
-                          Text("We are Launching at 18 July 2025",style: GoogleFonts.prompt(fontSize: 60.sp,fontWeight: FontWeight.w600),),
+                          Text("We are Launching on 18 July 2025",style: GoogleFonts.prompt(fontSize: 60.sp,fontWeight: FontWeight.w600),),
                         ],
                       ),
                     ),
