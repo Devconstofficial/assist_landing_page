@@ -39568,7 +39568,7 @@ return A.co(r,B.z,B.u,B.q,0)},
 $S:289}
 A.tm.prototype={
 O(a){var s=null,r=A.yo($.asU,s,s,200,146),q=A.aQ(s,51,s),p=$.x().gb2(),o=t.p
-return A.awU(s,A.adu(new A.bt(new A.ak(0,0,88,88),A.co(A.a([new A.bt(B.G1,r,s),q,new A.bt(B.G4,A.ck(A.a([A.eO(A.co(A.a([A.rK(B.m8,B.h,B.aw,41*$.x().gaE(),new A.a5_(),B.k,$.x().ag(14),"501(c)(3) Nonprofit",170*p),A.aQ(s,20*$.x().gaE(),s),A.be("We are Lunching at 18 July 2025",s,s,s,A.w2().$2$fontSize$fontWeight($.x().ag(60),B.aw),s,s)],o),B.Z,B.u,B.q,0),1),A.aQ(s,s,88*$.x().gb2()),A.yo($.aPt,s,s,515,515*$.x().gb2())],o),B.z,B.u,B.q,0),s)],o),B.Z,B.u,B.q,0),s),B.b6))}}
+return A.awU(s,A.adu(new A.bt(new A.ak(0,0,88,88),A.co(A.a([new A.bt(B.G1,r,s),q,new A.bt(B.G4,A.ck(A.a([A.eO(A.co(A.a([A.rK(B.m8,B.h,B.aw,41*$.x().gaE(),new A.a5_(),B.k,$.x().ag(14),"501(c)(3) Nonprofit",170*p),A.aQ(s,20*$.x().gaE(),s),A.be("We are Launching at 18 July 2025",s,s,s,A.w2().$2$fontSize$fontWeight($.x().ag(60),B.aw),s,s)],o),B.Z,B.u,B.q,0),1),A.aQ(s,s,88*$.x().gb2()),A.yo($.aPt,s,s,515,515*$.x().gb2())],o),B.z,B.u,B.q,0),s)],o),B.Z,B.u,B.q,0),s),B.b6))}}
 A.a5_.prototype={
 $0(){},
 $S:14}
