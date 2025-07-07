@@ -3,6 +3,7 @@ import 'package:assist_landing_page/custom_widgets/footer_section.dart';
 import 'package:assist_landing_page/custom_widgets/home_section.dart';
 import 'package:assist_landing_page/custom_widgets/how_work_section.dart';
 import 'package:assist_landing_page/custom_widgets/impact_section.dart';
+import 'package:assist_landing_page/custom_widgets/our_team.dart';
 import 'package:assist_landing_page/custom_widgets/pricing_page.dart';
 import 'package:assist_landing_page/screens/landing_page/controller/landing_controller.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ import 'package:get/get.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/app_images.dart';
 import '../../../utils/app_styles.dart';
+import '../../custom_widgets/about_us_section.dart';
 import '../../custom_widgets/custom_button.dart';
 import '../../custom_widgets/custom_textfield.dart';
 import '../../custom_widgets/faq_page.dart';
@@ -43,7 +45,7 @@ class LandingPage extends GetView<LandingController> {
                   color: kBlackColor,
                 ),
                 Obx(() {
-                  List<String> titles = ['Home', 'How It Works', 'Impact', 'FAQs', 'Contact',];
+                  List<String> titles = ['Home', 'How It Works', 'About Us' , 'Impact', 'Our Team' , 'FAQs', 'Contact',];
 
                   return Row(
                     children: List.generate(titles.length, (index) {
@@ -121,10 +123,14 @@ class LandingPage extends GetView<LandingController> {
                 if(controller.selectedIndex.value == 1)
                   HowWorkSection(),
                 if(controller.selectedIndex.value == 2)
-                  ImpactSection(),
+                  AboutUsSection(),
                 if(controller.selectedIndex.value == 3)
-                  FaqSection(),
+                  ImpactSection(),
                 if(controller.selectedIndex.value == 4)
+                  OurTeamSection(),
+                if(controller.selectedIndex.value == 5)
+                  FaqSection(),
+                if(controller.selectedIndex.value == 6)
                   ContactUsSection(),
                 FooterSection()
               ],

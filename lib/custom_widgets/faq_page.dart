@@ -36,7 +36,7 @@ class _FaqSectionState extends State<FaqSection> {
               spacing: 12,
               children: [
                 SvgPicture.asset(kDotsImage,height: 21,width: 155.w,),
-                Text("The Assist App_Freqently Asked Questions",style: AppStyles.blackTextStyle().copyWith(fontSize: 55.sp,fontWeight: FontWeight.w500),),
+                Text("Frequently Asked Questions",style: AppStyles.blackTextStyle().copyWith(fontSize: 55.sp,fontWeight: FontWeight.w500),),
               ],
             ),
           ),

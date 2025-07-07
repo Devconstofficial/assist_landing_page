@@ -20,7 +20,7 @@ class HowWorkSection extends StatefulWidget {
 class _HowWorkSectionState extends State<HowWorkSection> {
   LandingController controller = Get.put(LandingController());
 
-  Widget subscriberTab(title1, detail1, title2, detail2, title3, detail3, title4, detail4,{bool isSubscription = false, String? title5, String? detail5}){
+  Widget subscriberTab(title1, detail1, title2, detail2, title3, detail3, title4, detail4,{bool isApplicant = false, String? title5, String? detail5}){
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 88.w),
       child: SizedBox(
@@ -42,9 +42,9 @@ class _HowWorkSectionState extends State<HowWorkSection> {
             Expanded(
               flex: 3,
               child: Padding(
-                padding: EdgeInsets.only(top: isSubscription == true ? 0 : 69.h),
+                padding: EdgeInsets.only(top: isApplicant == true ? 0 : 69.h),
                 child: Column(
-                  mainAxisAlignment: isSubscription == true ? MainAxisAlignment.spaceBetween : MainAxisAlignment.start,
+                  mainAxisAlignment: isApplicant == true ? MainAxisAlignment.spaceBetween : MainAxisAlignment.start,
                   children: [
                     Row(
                       children: [
@@ -53,7 +53,8 @@ class _HowWorkSectionState extends State<HowWorkSection> {
                         Expanded(child: reviewContainer(title2, detail2)),
                       ],
                     ),
-                    SizedBox(height: isSubscription == true ? 0 : 32.h,),
+                    if(isApplicant != true)
+                    SizedBox(height: 32.h,),
                     Row(
                       children: [
                         Expanded(child: reviewContainer(title3, detail3)),
@@ -61,11 +62,11 @@ class _HowWorkSectionState extends State<HowWorkSection> {
                         Expanded(child: reviewContainer(title4, detail4)),
                       ],
                     ),
-                    if(isSubscription == true)
+                    if(isApplicant == true)
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        reviewContainer(title5, detail5,width: 334.w),
+                        reviewContainer(title5, detail5,width: 370.w),
                       ],
                     ),
                   ],
@@ -123,8 +124,8 @@ class _HowWorkSectionState extends State<HowWorkSection> {
           SizedBox(height: 90.h,),
           Obx(
                 () {
-              return controller.selectedType.value == 0 ? subscriberTab("Subscription Plan", "Choose a subscription plan that suits you.", "Impact Feed", "Can post on impact feed.", "Contribution Stats", "Can view the overall donation impact.", "Contact The Admin", "Can contact the admin for assistance.", isSubscription: true,title5: "Pick a Random Address",detail5: "Select address to complete your submission.") :
-              subscriberTab("Select Bill Category", "Choose the type of bill you want to submit.", "Upload Bill", "Submit clear photo PDF of your Recent Bill For verification.", "Share Your Reason", "Tell us why you are applying.", "Submit Application", "Review your details submit your application  for consideration.");
+              return controller.selectedType.value == 0 ? subscriberTab("Subscription Plan", "Choose a subscription plan that suits you.", "Impact Feed", "Can post on impact feed.", "Contribution Stats", "Can view the overall donation impact.", "Contact The Admin", "Can contact the admin for assistance.", ) :
+              subscriberTab("Select Bill Category", "Choose the type of bill you want to submit.", "Upload Bill", "Submit clear photo PDF of your Recent Bill For verification.", "Share Your Reason", "Tell us why you are applying.", "Submit Application", "Review your details submit your application  for consideration.",isApplicant: true,title5: "Random Applicant Choosen",detail5: "Applicant is choosen randomly from the list.");
           },)
         ],
       ),
@@ -153,7 +154,7 @@ class _HowWorkSectionState extends State<HowWorkSection> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(title,style: AppStyles.blackTextStyle().copyWith(fontSize: 20.sp,),),
+                Text(title,style: AppStyles.blackTextStyle().copyWith(fontSize: 19.sp,),),
                 Text(detail,style: AppStyles.blackTextStyle().copyWith(fontSize: 14.sp,fontWeight: FontWeight.w400),),
               ],
             ),

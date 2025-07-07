@@ -112,7 +112,7 @@ class FooterSection extends StatelessWidget {
               children: [
                 Text("WE DON'T DO CAUSES. WE SOLVE NEEDS",style: AppStyles.promptTextStyle().copyWith(fontSize: 60.sp,fontWeight: FontWeight.w900,),),
                 Divider(color: kWhiteColor,thickness: 4,height: 4,endIndent: 0,indent: 0,),
-                Text(" NOTE : All donations and applications are processed through the app only.",style: AppStyles.promptTextStyle().copyWith(fontSize: 20.sp,fontWeight: FontWeight.w300,),),
+                Text(" NOTE : All donations and applications are processed through the app only.",style: AppStyles.promptTextStyle().copyWith(fontSize: 20.sp,fontWeight: FontWeight.w200,color: kWhiteColor.withOpacity(0.8)),),
               ],
             )
           ],
