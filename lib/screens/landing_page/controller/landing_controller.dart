@@ -12,7 +12,15 @@ class LandingController extends GetxController {
   var isDonateSelected = false.obs;
   RxDouble selectedAmount = 50.0.obs;
   final selectedPlanIndex = 0.obs;
-
+  final List<String> navTitles = [
+    'Home',
+    'How It Works',
+    'About Us',
+    'Impact',
+    'Our Team',
+    'FAQs',
+    'Contact',
+  ];
   var isMonthly = true.obs;
 
   void selectMonthly() => isMonthly.value = true;
