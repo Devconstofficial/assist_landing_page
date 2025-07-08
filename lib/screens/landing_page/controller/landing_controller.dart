@@ -11,6 +11,7 @@ class LandingController extends GetxController {
   var isChecked1 = false.obs;
   var isDonateSelected = false.obs;
   RxDouble selectedAmount = 50.0.obs;
+  final selectedPlanIndex = 0.obs;
 
   var isMonthly = true.obs;
 

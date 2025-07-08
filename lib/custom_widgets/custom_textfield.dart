@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../utils/app_colors.dart';
@@ -54,6 +55,8 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = Get.width < 600;
+
     return Container(
       width: width,
       decoration: BoxDecoration(
@@ -82,7 +85,7 @@ class CustomTextField extends StatelessWidget {
           contentPadding: EdgeInsets.symmetric(vertical: 27.h),
           hintText: hintText,
           hintStyle: AppStyles.greyTextStyle().copyWith(
-            fontSize: 20.sp,
+            fontSize: isMobile ? 14 : 20.sp,
             fontWeight: FontWeight.w400,
             color: hintColor,
           ),
@@ -108,7 +111,7 @@ class CustomTextField extends StatelessWidget {
           ),
         ),
         style: GoogleFonts.lato(
-          fontSize: 16.sp,
+          fontSize: isMobile ? 14 : 16.sp,
           fontWeight: FontWeight.w400,
           color: kBlackTextColor,
         ),

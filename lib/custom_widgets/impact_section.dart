@@ -1,4 +1,3 @@
-import 'package:assist_landing_page/custom_widgets/underline_text.dart';
 import 'package:assist_landing_page/screens/landing_page/controller/landing_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,8 +6,6 @@ import 'package:get/get.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_images.dart';
 import '../utils/app_styles.dart';
-import 'custom_button.dart';
-import 'custom_textfield.dart';
 
 class ImpactSection extends StatefulWidget {
   const ImpactSection({super.key});
@@ -22,8 +19,10 @@ class _ImpactSectionState extends State<ImpactSection> {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = Get.width < 600;
+
     return Padding(
-      padding: EdgeInsets.only(bottom: 111.h,top: 27.h),
+      padding: EdgeInsets.only(bottom: 111.h,top: isMobile ? 0 : 27.h),
       child: Column(
         children: [
           SvgPicture.asset(kDotsImage,height: 21,width: 155.w,),
@@ -36,24 +35,24 @@ class _ImpactSectionState extends State<ImpactSection> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: 538.w,
+                width: isMobile ? 253 : 538.w,
                 decoration: BoxDecoration(
                   color: kGreyShade3Color,
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(isMobile ? 16 : 20),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.only(top: 50.h,left: 31.w,right: 30.w,bottom: 54.h),
+                  padding: isMobile ? EdgeInsets.symmetric(vertical: 24.h,horizontal: 16) : EdgeInsets.only(top: 50.h,left: 31.w,right: 30.w,bottom: 54.h),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
                         children: [
-                          SvgPicture.asset(kMarketImage,height: 70,),
+                          SvgPicture.asset(kMarketImage,height: isMobile ? 40 : 70,),
                           SizedBox(width: 16.w,),
-                          Text("\$2,4000",style: AppStyles.blackTextStyle().copyWith(fontSize: 24.sp,),),
+                          Text("\$2,4000",style: AppStyles.blackTextStyle().copyWith(fontSize: isMobile ? 14 : 24.sp,),),
                         ],
                       ),
-                      Text("24 subscribers",style: AppStyles.blackTextStyle().copyWith(fontSize: 18.sp,),),
+                      Text("24 subscribers",style: AppStyles.blackTextStyle().copyWith(fontSize: isMobile ? 10 : 18.sp,),),
                     ],
                   ),
                 ),
@@ -64,7 +63,7 @@ class _ImpactSectionState extends State<ImpactSection> {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              spacing: 36.w,
+              spacing: isMobile ? 10 :36.w,
               children: [
                 reviewContainer(),
                 reviewContainer(),
@@ -81,24 +80,26 @@ class _ImpactSectionState extends State<ImpactSection> {
     );
   }
   reviewContainer(){
+    final isMobile = Get.width < 600;
+
     return Container(
-      width: 590.w,
+      width: isMobile ? 329 : 590.w,
       decoration: BoxDecoration(
         color: kGreyShade3Color,
         borderRadius: BorderRadius.circular(24),
       ),
       child: Padding(
-        padding: EdgeInsets.only(top: 44.h,left: 33.w,bottom: 44.h,right: 18.w),
+        padding: isMobile ? EdgeInsets.symmetric(vertical: 30.h,horizontal: 33.w) : EdgeInsets.only(top: 44.h,left: 33.w,bottom: 44.h,right: 18.w),
         child: Row(
           children: [
-            SvgPicture.asset(kUserImage,height: 105,),
+            SvgPicture.asset(kUserImage,height: isMobile ? 40 : 105,),
             SizedBox(width: 14.w,),
             Flexible(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Thank you so much for your help!",style: AppStyles.blackTextStyle().copyWith(fontSize: 24.sp,),),
-                  Text("You made a difficult time a little easier for me and my family.",style: AppStyles.blackTextStyle().copyWith(fontSize: 18.sp,fontWeight: FontWeight.w400),),
+                  Text("Thank you so much for your help!",style: AppStyles.blackTextStyle().copyWith(fontSize: isMobile ? 14 : 24.sp,),),
+                  Text("You made a difficult time a little easier for me and my family.",style: AppStyles.blackTextStyle().copyWith(fontSize: isMobile ? 10 : 18.sp,fontWeight: FontWeight.w400),),
                 ],
               ),
             ),
