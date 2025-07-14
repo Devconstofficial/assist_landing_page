@@ -22,6 +22,8 @@ class LandingController extends GetxController {
     'Contact',
   ];
   var isMonthly = true.obs;
+  final ScrollController scrollController = ScrollController();
+  var selectedTabIndex = 0.obs;
 
   void selectMonthly() => isMonthly.value = true;
   void selectYearly() => isMonthly.value = false;
@@ -29,6 +31,13 @@ class LandingController extends GetxController {
   void changeIndex(int index) {
     selectedIndex.value = index;
     isDonateSelected.value = false;
+    Future.delayed(Duration(milliseconds: 100), () {
+      scrollController.animateTo(
+        0,
+        duration: Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    });
   }
 
   void setSelected(int index) {

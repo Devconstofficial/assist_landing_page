@@ -1,18 +1,13 @@
-import 'package:assist_landing_page/custom_widgets/underline_text.dart';
 import 'package:assist_landing_page/screens/landing_page/controller/landing_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import '../utils/app_colors.dart';
 import '../utils/app_images.dart';
 import '../utils/app_styles.dart';
-import 'custom_button.dart';
-import 'custom_textfield.dart';
+
 
 class FaqSection extends StatefulWidget {
-
   const FaqSection({super.key});
 
   @override
@@ -21,7 +16,6 @@ class FaqSection extends StatefulWidget {
 
 class _FaqSectionState extends State<FaqSection> {
   LandingController controller = Get.put(LandingController());
-
 
   @override
   Widget build(BuildContext context) {

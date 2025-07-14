@@ -5,6 +5,7 @@ import 'package:assist_landing_page/custom_widgets/how_work_section.dart';
 import 'package:assist_landing_page/custom_widgets/impact_section.dart';
 import 'package:assist_landing_page/custom_widgets/our_team.dart';
 import 'package:assist_landing_page/custom_widgets/pricing_page.dart';
+import 'package:assist_landing_page/custom_widgets/terms_section.dart';
 import 'package:assist_landing_page/screens/landing_page/controller/landing_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -126,16 +127,16 @@ class LandingPage extends GetView<LandingController> {
                                   ),
                               if (isHome)
                                 CustomButton(
-                                  title: "Donate now",
-                                  width: 100,
+                                  title: "Download Now",
+                                  width: 141,
                                   height: 39,
                                   textSize: 14,
                                   borderRadius: 60,
                                   color: kBlackColor,
                                   textColor: Colors.white,
                                   onTap: () {
-                                    controller.selectedIndex.value = -1;
-                                    controller.isDonateSelected.value = true;
+                                    // controller.selectedIndex.value = -1;
+                                    // controller.isDonateSelected.value = true;
                                   },
                                 ),
                             ],
@@ -202,12 +203,12 @@ class LandingPage extends GetView<LandingController> {
                                 child: CustomButton(
                                   textSize: 16,
                                   fontWeight: FontWeight.w500,
-                                  title: "Donate Now",
-                                  width: 121,
-                                  height: 42.h,
+                                  title: "Download Now",
+                                  width: 141,
+                                  height: 42,
                                   onTap: () {
-                                    controller.selectedIndex.value = -1;
-                                    controller.isDonateSelected.value = true;
+                                    // controller.selectedIndex.value = -1;
+                                    // controller.isDonateSelected.value = true;
                                   },
                                 ),
                               ),
@@ -270,9 +271,11 @@ class LandingPage extends GetView<LandingController> {
         ),
 
         body: SingleChildScrollView(
+          controller: controller.scrollController,
+
           child: Obx(() {
             if (controller.isDonateSelected.value) {
-              return Column(children: [PricingPage(), FooterSection()]);
+              return Column(children: [PricingPage(), FooterSection(controller: controller,)]);
             }
             return Column(
               children: [
@@ -289,7 +292,8 @@ class LandingPage extends GetView<LandingController> {
                 if (controller.selectedIndex.value == 4) OurTeamSection(),
                 if (controller.selectedIndex.value == 5) FaqSection(),
                 if (controller.selectedIndex.value == 6) ContactUsSection(),
-                FooterSection(),
+                if (controller.selectedIndex.value == 7) TermsSection(),
+                FooterSection(controller: controller,),
               ],
             );
           }),
