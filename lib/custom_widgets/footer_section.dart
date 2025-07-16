@@ -1,7 +1,9 @@
 import 'package:assist_landing_page/custom_widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../screens/landing_page/controller/landing_controller.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_images.dart';
@@ -11,6 +13,23 @@ class FooterSection extends StatelessWidget {
   final LandingController controller;
 
   const FooterSection({super.key, required this.controller});
+
+  Future<void> launchSocialLink(String url) async {
+    if (!url.startsWith('http')) {
+      url = 'https://$url';
+    }
+    final Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(
+        uri,
+        mode: LaunchMode.platformDefault,
+        webOnlyWindowName: '_blank',
+      );
+    } else {
+      debugPrint('Could not launch $url');
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -169,13 +188,31 @@ class FooterSection extends StatelessWidget {
           "FAQS",
           "Contact Us",
         ]),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text("Follow us",style: AppStyles.whiteTextStyle().copyWith(fontSize: 20,fontWeight: FontWeight.w400),),
+            SizedBox(height: 44.h,),
+            linkRow(kTwitterImage, "Twitter", (){
+              launchSocialLink("X.com/theassistapp1");
+            }),
+            SizedBox(height: 29.h,),
+            linkRow(kFacebookImage, "Facebook", (){
+              launchSocialLink("https://www.facebook.com/share/14ELKyM8Ekn/?mibextid=wwXIfr");
+            }),
+            SizedBox(height: 29.h,),
+            linkRow(kInstagram1Icon, "Instagram", (){
+              launchSocialLink("Instagram.com/theassistapp");
+
+            }),
+          ],
+        )
       ],
     )
         : SizedBox(
-      width: 357.w,
+      // width: 357.w,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           buildLinkColumn([
             "Home",
@@ -183,11 +220,32 @@ class FooterSection extends StatelessWidget {
             "Impact",
             "Terms & privacy policy",
           ]),
+          SizedBox(width: 40.w,),
           buildLinkColumn([
             "About Us",
             "FAQS",
             "Contact Us",
           ]),
+          SizedBox(width: 40.w,),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Follow us",style: AppStyles.whiteTextStyle().copyWith(fontSize: 20.sp,fontWeight: FontWeight.w400),),
+              SizedBox(height: 44.h,),
+              linkRow(kTwitterImage, "Twitter", (){
+                launchSocialLink("X.com/theassistapp1");
+              }),
+              SizedBox(height: 29.h,),
+              linkRow(kFacebookImage, "Facebook", (){
+                launchSocialLink("https://www.facebook.com/share/14ELKyM8Ekn/?mibextid=wwXIfr");
+              }),
+              SizedBox(height: 29.h,),
+              linkRow(kInstagram1Icon, "Instagram", (){
+                launchSocialLink("Instagram.com/theassistapp");
+
+              }),
+            ],
+          )
         ],
       ),
     );
@@ -228,6 +286,24 @@ class FooterSection extends StatelessWidget {
         ),
       ))
           .toList(),
+    );
+  }
+
+  Widget linkRow(image,title,VoidCallback onTap){
+    final isMobile = Get.width < 600;
+
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        color: Colors.transparent,
+        child: Row(
+          spacing: 26.w,
+          children: [
+            SvgPicture.asset(image,height: 30,width: 30,),
+            Text(title,style: AppStyles.whiteTextStyle().copyWith(fontSize: isMobile ? 18 : 18.sp,fontWeight: FontWeight.w400),),
+          ],
+        ),
+      ),
     );
   }
 }

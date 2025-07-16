@@ -10,7 +10,6 @@ class RouteGenerator {
     return [
       GetPage(name: kLandingPageRoute, page: () => LandingPage(), binding: ScreenBindings(),),
       GetPage(name: kLaunchingPageRoute, page: () => LaunchingPage(), binding: ScreenBindings(),),
-
     ];
   }
 }

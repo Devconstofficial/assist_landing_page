@@ -30,36 +30,42 @@ class _ImpactSectionState extends State<ImpactSection> {
             "Impact",
             style: AppStyles.blackTextStyle().copyWith(fontWeight: FontWeight.w500,fontSize: 55.sp),
           ),
-          SizedBox(height: 59.h,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: isMobile ? 253 : 538.w,
-                decoration: BoxDecoration(
-                  color: kGreyShade3Color,
-                  borderRadius: BorderRadius.circular(isMobile ? 16 : 20),
-                ),
-                child: Padding(
-                  padding: isMobile ? EdgeInsets.symmetric(vertical: 24.h,horizontal: 16) : EdgeInsets.only(top: 50.h,left: 31.w,right: 30.w,bottom: 54.h),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          SizedBox(height: 83.h,),
+          Center(
+            child: Container(
+              width: 274,
+              decoration: BoxDecoration(
+                color: kGreyShade3Color,
+                borderRadius: BorderRadius.circular(isMobile ? 14 : 14),
+              ),
+              child: Column(
+                children: [
+                  Column(
                     children: [
-                      Row(
-                        children: [
-                          SvgPicture.asset(kMarketImage,height: isMobile ? 40 : 70,),
-                          SizedBox(width: 16.w,),
-                          Text("\$2,4000",style: AppStyles.blackTextStyle().copyWith(fontSize: isMobile ? 14 : 24.sp,),),
-                        ],
-                      ),
-                      Text("24 subscribers",style: AppStyles.blackTextStyle().copyWith(fontSize: isMobile ? 10 : 18.sp,),),
+                      SizedBox(height: 10.h,),
+                      Image.asset(kRocketImage,height: 36,width: 36,),
+                      SizedBox(height: 8.h,),
+                      Text("Impact Made",style: AppStyles.blackTextStyle().copyWith(fontSize: isMobile ? 14 : 24.sp,),),
+                      SizedBox(height: 26.h,),
+                      Text("\$7,4000",style: AppStyles.blackTextStyle().copyWith(fontSize: isMobile ? 18 : 32.sp,),),
+                      SizedBox(height: 26.h,),
                     ],
                   ),
-                ),
+                  Container(
+                    height: 38.h,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(14),
+                          bottomRight: Radius.circular(14),
+                        ),
+                        color: kPrimaryColor
+                      ),
+                      child: Center(child: Text("24 People are Making a Difference",style: AppStyles.blackTextStyle().copyWith(fontSize: isMobile ? 10 : 16.sp,color: kWhiteColor),))),
+                ],
               ),
-            ],
+            ),
           ),
-          SizedBox(height: 59.h,),
+          SizedBox(height: 43.h,),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
@@ -74,11 +80,11 @@ class _ImpactSectionState extends State<ImpactSection> {
             ),
           ),
           SizedBox(height: 150.h,),
-
         ],
       ),
     );
   }
+
   reviewContainer(){
     final isMobile = Get.width < 600;
 
@@ -108,5 +114,6 @@ class _ImpactSectionState extends State<ImpactSection> {
       ),
     );
   }
+
 }
 
